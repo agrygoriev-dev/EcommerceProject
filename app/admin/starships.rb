@@ -16,7 +16,9 @@ ActiveAdmin.register Starship do
     column :type
     column :planets do |ship|
       table_for ship.planets.order('name ASC') do
-        column(&:name)
+        column do |planet|
+          link_to planet.name, [:admin, planet]
+        end
       end
     end
   end
