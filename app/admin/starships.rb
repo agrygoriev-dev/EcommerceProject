@@ -1,18 +1,48 @@
-ActiveAdmin.register Starship do
+# frozen_string_literal: true
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :name, :description, :speed, :length, :price, :is_new, :is_refurbished, :type_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name, :description, :speed, :length, :price, :is_new, :is_refurbished, :type_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+ActiveAdmin.register Starship do
+  permit_params :name, :description, :speed, :length, :price, :is_new, :is_refurbished, :type_id, planet_ids: []
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :description
+    column :speed
+    column :length
+    column :price
+    column :is_new
+    column :is_refurbished
+    column :type
+    column :planets do |ship|
+      table_for ship.planets.order('name ASC') do
+        column(&:name)
+      end
+    end
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :description
+      row :speed
+      row :length
+      row :price
+      row :is_new
+      row :is_refurbished
+      row :type
+      table_for starship.planets.order('name ASC') do
+        column 'Planets' do |planet|
+          link_to planet.name, [:admin, planet]
+        end
+      end
+    end
+  end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs
+    f.input :planet_ids, as: :check_boxes, collection: Planet.all
+    f.actions
+  end
 end
