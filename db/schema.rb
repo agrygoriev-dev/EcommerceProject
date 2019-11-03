@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_194712) do
+ActiveRecord::Schema.define(version: 2019_11_03_195632) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 2019_11_03_194712) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "starships", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "speed"
+    t.decimal "length"
+    t.decimal "price"
+    t.boolean "is_new"
+    t.boolean "is_refurbished"
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["type_id"], name: "index_starships_on_type_id"
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -37,4 +51,5 @@ ActiveRecord::Schema.define(version: 2019_11_03_194712) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "starships", "types"
 end
