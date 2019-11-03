@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_203549) do
+ActiveRecord::Schema.define(version: 2019_11_03_204403) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2019_11_03_203549) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "planets", force: :cascade do |t|
@@ -60,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_203549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "orders", "customers"
   add_foreign_key "shipplanets", "planets"
   add_foreign_key "shipplanets", "starships"
   add_foreign_key "starships", "types"
