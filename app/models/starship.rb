@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Starship < ApplicationRecord
+  paginates_per 6
   belongs_to :type
   has_many :shipplanets, dependent: :delete_all
   has_many :planets, through: :shipplanets

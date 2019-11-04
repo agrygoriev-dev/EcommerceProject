@@ -4,3 +4,7 @@
             collection: @starships,
             locals: {name_is_link: true}%>
 </div>
+<div class="pagination">
+  <%= paginate @starships, window: 2 %>
+</div>
+
