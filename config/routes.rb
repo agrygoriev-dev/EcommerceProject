@@ -2,10 +2,12 @@
 
 Rails.application.routes.draw do
   get 'starships/index'
-  get 'starships/show'
   get 'starships/starship_category'
   get 'starships/starship_new'
   get 'starships/starship_refurbished'
+
+  get '/starships', to: 'starships#index', as: :starships
+  get '/starships/:id', to: 'starships#show', id: /\d+/, as: :starship
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

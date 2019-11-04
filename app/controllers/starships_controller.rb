@@ -1,5 +1,6 @@
 class StarshipsController < ApplicationController
   def index
+    @starships = Starship.order(:name)
   end
 
   def show
