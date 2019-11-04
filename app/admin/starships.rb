@@ -33,6 +33,9 @@ ActiveAdmin.register Starship do
       row :is_new
       row :is_refurbished
       row :type
+      row :image do |ad|
+        image_tag url_for(ad.image)
+      end
       table_for starship.planets.order('name ASC') do
         column 'Planets' do |planet|
           link_to planet.name, [:admin, planet]
