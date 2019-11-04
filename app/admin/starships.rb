@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Starship do
-  permit_params :name, :description, :speed, :length, :price, :is_new, :is_refurbished, :type_id, planet_ids: []
+  permit_params :name, :description, :speed, :length, :price, :is_new, :is_refurbished, :type_id, :image, planet_ids: []
 
   index do
     selectable_column
@@ -44,7 +44,10 @@ ActiveAdmin.register Starship do
   form do |f|
     f.semantic_errors
     f.inputs
-    f.input :planet_ids, as: :check_boxes, collection: Planet.all
+    f.inputs do
+      f.input :image, as: :file
+      f.input :planet_ids, as: :check_boxes, collection: Planet.all
+    end
     f.actions
   end
 end

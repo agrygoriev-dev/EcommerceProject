@@ -8,4 +8,6 @@ class Starship < ApplicationRecord
 
   validates :name, :price, presence: true
   validates :price, :length, :speed, numericality: true
+
+  has_one_attached :image
 end
