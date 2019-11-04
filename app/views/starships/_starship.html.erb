@@ -1,0 +1,37 @@
+<div class="column is-one-third">
+  <% if starship.image.present?%>
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <%= image_tag url_for(starship.image)%>
+          </figure>
+        </div>
+      <%end%>
+  <div class="card starship">
+    <div class="card content">
+      <p class="title is-4">
+        <%if name_is_link%>
+          <%= link_to starship.name, starship%>
+        <%else%>
+          <%=starship.name%>
+        <%end%>
+      </p>
+      <ul>
+        <li>
+          <strong>Type:</strong> <%=starship.type.name%>
+        </li>
+        <li>
+          <strong>Description:</strong> <%=starship.description%>
+        </li>
+        <li>
+          <strong>Speed:</strong> <%=starship.speed%> km/h
+        </li>
+        <li>
+          <strong>Length:</strong> <%=starship.length%> m
+        </li>
+        <li>
+          <strong>Price:</strong> $<%=starship.price%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
