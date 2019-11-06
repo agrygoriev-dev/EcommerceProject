@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'types/index'
+  get 'types/show'
   get 'starships/index'
   get 'starships/starship_category'
   get 'starships/starship_new'
