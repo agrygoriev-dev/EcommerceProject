@@ -12,6 +12,26 @@
   </head>
 
   <body>
+    <header>
+      <nav class="level">
+        <div class="level-left">
+          <p class="level-item"><strong><%=link_to "Home", root_path%></strong></p>
+          <p class="level-item"><strong><%=link_to "Spaceship Types", types_path%></strong></p>
+          <p class="level-item"><strong><%=link_to "Planets", types_path%></strong></p>
+          <p class="level-item"><strong><%=link_to "About Us", about_path%></strong></p>
+          <p class="level-item"><strong><%=link_to "Contact", contact_path%></strong></p>
+        </div>
+        <div class="level-right">
+          <p class="level-item"><strong>Search: </strong></p>
+          <div class="level-item"><%= form_tag(starship_category_path, method: :get) do%>
+            <%= text_field_tag(:search, params[:search])%>
+            <%= select_tag :type, options_from_collection_for_select(Type.all, "id", "name"), :include_blank=> true%>
+            <%= submit_tag ("Search")%>
+            <%end%>
+          </div>
+        </div>
+      </nav>
+    </header>
     <div class="container is-fluid">
       <%= yield %>
     </div>

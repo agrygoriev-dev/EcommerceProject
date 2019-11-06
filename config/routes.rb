@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'starships/starship_new'
   get 'starships/starship_refurbished'
 
+  get 'starships/starship_category', to: 'starships#starship_category', as: :starship_category
+
   get 'pages/about', to: 'pages#about', as: :about
   get 'pages/contact', to: 'pages#contact', as: :contact
 

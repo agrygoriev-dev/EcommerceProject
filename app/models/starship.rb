@@ -11,4 +11,19 @@ class Starship < ApplicationRecord
   validates :price, :length, :speed, numericality: true
 
   has_one_attached :image
+
+  def self.search(search, type)
+    if type
+      by_type = Type.find(type)
+      starships = by_type.starships
+    else
+      starships = Starship.all
+    end
+
+    if search
+      starships.where('title like ?', "%#{search}%")
+    else
+      starships.order(:title)
+    end
+  end
 end

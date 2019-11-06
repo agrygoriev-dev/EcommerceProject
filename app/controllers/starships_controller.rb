@@ -14,4 +14,8 @@ class StarshipsController < ApplicationController
   def starship_new; end
 
   def starship_refurbished; end
+
+  def starship_params
+    params.require(:starship).permit(:name, :description, :search, :type, :id)
+  end
 end
