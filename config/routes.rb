@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'pages/about'
+  get 'pages/contact'
   get 'starships/starship_category'
   get 'starships/starship_new'
   get 'starships/starship_refurbished'
