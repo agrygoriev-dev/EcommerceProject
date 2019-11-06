@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'planets/index'
-  get 'planets/show'
   get 'starships/starship_category'
   get 'starships/starship_new'
   get 'starships/starship_refurbished'
@@ -12,6 +10,9 @@ Rails.application.routes.draw do
 
   get '/types', to: 'types#index', as: :types
   get '/types/:id', to: 'types#show', id: /\d+/, as: :type
+
+  get '/planets', to: 'planets#index', as: :planets
+  get '/planets/:id', to: 'planets#show', id: /\d+/, as: :planet
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
