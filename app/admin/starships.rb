@@ -14,6 +14,9 @@ ActiveAdmin.register Starship do
     column :is_new
     column :is_refurbished
     column :type
+    column 'Image' do |ship|
+      image_tag url_for(ship.image), size: '100x100', alt: 'No image'
+    end
     column :planets do |ship|
       table_for ship.planets.order('name ASC') do
         column do |planet|
@@ -33,8 +36,8 @@ ActiveAdmin.register Starship do
       row :is_new
       row :is_refurbished
       row :type
-      row :image do |ad|
-        image_tag url_for(ad.image)
+      row :image do |ship|
+        image_tag url_for(ship.image), size: '800x600', alt: 'No image'
       end
       table_for starship.planets.order('name ASC') do
         column 'Planets' do |planet|
