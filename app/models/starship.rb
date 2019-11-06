@@ -13,7 +13,7 @@ class Starship < ApplicationRecord
   has_one_attached :image
 
   def self.search(search, type)
-    if type
+    if !type.blank?
       by_type = Type.find(type)
       starships = by_type.starships
     else
@@ -21,9 +21,9 @@ class Starship < ApplicationRecord
     end
 
     if search
-      starships.where('title like ?', "%#{search}%")
+      starships.where('name like ?', "%#{search}%")
     else
-      starships.order(:title)
+      starships.order(:name)
     end
   end
 end

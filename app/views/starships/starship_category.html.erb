@@ -1,2 +1,11 @@
-<h1>Starships#starship_category</h1>
-<p>Find me in app/views/starships/starship_category.html.erb</p>
+<h1 class="title">Search results:</h1>
+<%if @starships%>
+  <div class="columns is-multiline">
+    <%= render partial: 'starship',
+              collection: @starships,
+              locals: {name_is_link: true}%>
+  </div>
+<%else%>
+  <p>No results found.</p>
+<%end%>
+

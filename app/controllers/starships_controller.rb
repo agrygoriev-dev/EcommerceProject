@@ -9,7 +9,9 @@ class StarshipsController < ApplicationController
     @starship = Starship.find(params[:id])
   end
 
-  def starship_category; end
+  def starship_category
+    @starships = Starship.search(params[:search], params[:type])
+  end
 
   def starship_new; end
 
