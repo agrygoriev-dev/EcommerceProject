@@ -8,16 +8,19 @@
       <%end%>
   <div class="card starship">
     <div class="card-content">
-      <p class="title is-4">
+      <p>
+        <span class="title is-4">
         <%if name_is_link%>
           <%= link_to starship.name, starship%>
         <%else%>
           <%=starship.name%>
         <%end%>
+        </span>
+        <span class="select is-rounded is-small align-right"><%= select_tag "planets", options_from_collection_for_select(starship.planets, "id", "name")%> </span>
       </p>
       <ul>
         <li>
-          <strong>Type:</strong> <%=starship.type.name%>
+          <strong>Type:</strong> <%= link_to starship.type.name, starship.type%>
         </li>
         <li>
           <strong>Description:</strong> <%=starship.description%>
