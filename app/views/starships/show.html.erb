@@ -1,2 +1,5 @@
-<h1>Starships#show</h1>
-<p>Find me in app/views/starships/show.html.erb</p>
+<div >
+  <%= render partial: 'starship',
+            object: @starship,
+            locals: {name_is_link: false}%>
+</div>
