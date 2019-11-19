@@ -1,7 +1,10 @@
+<div class="container">
 <h1 class="title"><%=@type.name%></h1>
-<p><strong>Description: </strong><%= @type.description%></p>
+<p class="is-large"><strong>Description: </strong><%= @type.description%></p>
+<p><strong>Available ships: </strong></p>
 <div class="columns is-multiline">
   <%= render partial: 'starships/starship',
             collection: @type.starships,
             locals: {name_is_link: true}%>
+</div>
 </div>

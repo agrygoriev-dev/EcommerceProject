@@ -1,4 +1,12 @@
 <h1 class="title">Availabe starship types:</h1>
 <div>
-
+<ul>
+ <% @types.each do |type|%>
+  <li>
+    <p>
+      <%= link_to type.name, type%>
+    </p>
+  </li>
+ <%end%>
+ </ul>
 </div>

@@ -13,24 +13,80 @@
 
   <body>
     <header>
-      <nav class="level">
+      <section class="hero is-info is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-start">
+          <span class="navbar-item">
+              <%=link_to "Home", root_path, :class => "button is-info"%>
+          </span>
+          <span class="navbar-item">
+              <%=link_to "About Us", about_path, :class => "button is-info"%>
+          </span>
+          <span class="navbar-item">
+              <%=link_to "Contact", contact_path, :class => "button is-info"%>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+              Greetins, Guest!
+            </span>
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span>Sign In</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span>Cart</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        ISPACESHIP
+      </h1>
+      <h2 class="subtitle">
+        Vintage
+      </h2>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot">
+    <nav class="tabs">
+      <div class="container level">
         <div class="level-left">
-          <p class="level-item"><strong><%=link_to "Home", root_path%></strong></p>
-          <p class="level-item"><strong><%=link_to "Spaceship Types", types_path%></strong></p>
-          <p class="level-item"><strong><%=link_to "Planets", types_path%></strong></p>
-          <p class="level-item"><strong><%=link_to "About Us", about_path%></strong></p>
-          <p class="level-item"><strong><%=link_to "Contact", contact_path%></strong></p>
+          <ul>
+            <li class="level-item"><%=link_to "Spaceship Types", types_path, :class => "button is-info"%></li>
+            <li class="level-item"><%=link_to "Planets", types_path, :class => "button is-info"%></li>
+            <li class="level-item"><a>New</a></li>
+            <li class="level-item"><a>On Sale</a></li>
+          </ul>
         </div>
         <div class="level-right">
-          <p class="level-item"><strong>Search: </strong></p>
+          <p class="level-item navbar-item"><strong>Search: </strong></p>
           <div class="level-item"><%= form_tag(starship_category_path, method: :get) do%>
             <%= text_field_tag(:search, params[:search])%>
-            <%= select_tag :type, options_from_collection_for_select(Type.all, "id", "name"), :include_blank=> true%>
-            <%= submit_tag ("Search")%>
+              <%= select_tag :type, options_from_collection_for_select(Type.all, "id", "name"), :include_blank=> true%>
+              <%= submit_tag ("Search")%>
             <%end%>
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
+  </div>
+</section>
     </header>
     <div class="container is-fluid">
       <%= yield %>
