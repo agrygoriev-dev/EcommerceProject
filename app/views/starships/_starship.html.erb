@@ -17,6 +17,15 @@
         <%end%>
         </span>
         <span class="select is-rounded is-small align-right"><%= select_tag "planets", options_from_collection_for_select(starship.planets, "id", "name")%> </span>
+        <%if starship.is_new%>
+            <p>
+              <%=link_to "New", starship_new_path, :class => "button is-success is-small"%>
+            </p>
+        <% elsif starship.is_refurbished %>
+            <p>
+              <%=link_to "On Sale", starship_refurbished_path, :class => "button is-danger is-small"%>
+            </p>
+        <%end%>
       </p>
       <ul>
         <li>

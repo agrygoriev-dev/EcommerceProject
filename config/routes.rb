@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'starships/starship_category'
-  get 'starships/starship_new'
-  get 'starships/starship_refurbished'
+  get 'starships/starship_refurbished', to: 'starships#starship_refurbished', as: :starship_refurbished
+
+  get 'starships/starship_new', to: 'starships#starship_new', as: :starship_new
 
   get 'starships/starship_category', to: 'starships#starship_category', as: :starship_category
 

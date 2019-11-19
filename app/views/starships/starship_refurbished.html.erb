@@ -1,2 +1,6 @@
-<h1>Starships#starship_refurbished</h1>
-<p>Find me in app/views/starships/starship_refurbished.html.erb</p>
+<h1 class="title">Starships on sale:</h1>
+<div class="columns is-multiline">
+  <%= render partial: 'starship',
+            collection: @starships,
+            locals: {name_is_link: true}%>
+</div>

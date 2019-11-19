@@ -1,2 +1,6 @@
-<h1>New deals:</h1>
-<p>Find me in app/views/starships/starship_new.html.erb</p>
+<h1 class="title">New deals:</h1>
+<div class="columns is-multiline">
+  <%= render partial: 'starship',
+            collection: @starships,
+            locals: {name_is_link: true}%>
+</div>

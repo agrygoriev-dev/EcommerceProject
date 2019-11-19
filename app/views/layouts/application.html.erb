@@ -70,8 +70,8 @@
           <ul>
             <li class="level-item"><%=link_to "Spaceship Types", types_path, :class => "button is-info"%></li>
             <li class="level-item"><%=link_to "Planets", types_path, :class => "button is-info"%></li>
-            <li class="level-item"><a>New</a></li>
-            <li class="level-item"><a>On Sale</a></li>
+            <li class="level-item"><%=link_to "New", starship_new_path, :class => "button is-success"%></li>
+            <li class="level-item"><%=link_to "On Sale", starship_refurbished_path, :class => "button is-danger"%></li>
           </ul>
         </div>
         <div class="level-right">
