@@ -32,7 +32,12 @@
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
             <span class="navbar-item">
-              Greetins, <%=current_user ? current_user.name : "Guest" %>!
+              <%="Greetins, "%>
+               <% if current_user %>
+              <%=link_to current_user.name, user_account_path, :class => "button is-info"%>
+              <%else%>
+              <%="Guest" %>
+              <%end%>
             </span>
             <%if current_user%>
               <span class="navbar-item">

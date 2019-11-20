@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'users/show'
   devise_for :users
+
+  get 'users/show', to: 'users#show', as: :user_account
   get 'starships/starship_refurbished', to: 'starships#starship_refurbished', as: :starship_refurbished
 
   get 'starships/starship_new', to: 'starships#starship_new', as: :starship_new
