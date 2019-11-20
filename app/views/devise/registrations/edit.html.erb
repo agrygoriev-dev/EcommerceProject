@@ -7,6 +7,18 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.email_field :name, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, cols: 20, rows: 5, autocomplete: "address" %>
+  </div>
+  <div class="field">
+    <%= f.label :planet %><br />
+    <%= f.collection_select(:planet_id, Planet.all, :id, :name) %>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
