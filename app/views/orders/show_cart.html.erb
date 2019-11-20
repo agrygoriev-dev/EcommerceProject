@@ -1,0 +1,46 @@
+<h1 class="title">Your Cart</h1>
+<%if @cart%>
+  <table class="table">
+    <% total_price = 0
+       total_quantity = 0%>
+    <thead>
+      <tr>
+        <th><abbr title="Number">#</abbr></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@starships.each_with_index do |starship, index|%>
+        <tr>
+          <% total_price += starship.price*@cart["#{starship.id}"]
+             total_quantity += @cart["#{starship.id}"]%>
+          <th><%=index + 1%></th>
+          <th><%= starship.name%>
+            <%=link_to 'delete', delete_from_cart_path(starship), method: :delete, :class => "button is-danger is-rounded is-small"%>
+          </th>
+          <th> <%= number_to_currency(starship.price*@cart["#{starship.id}"])%> </th>
+          <th> <%if @cart["#{starship.id}"] > 1%>
+            <%=link_to '-', change_quantity_path(starship, :quantity => -1), method: :post, :class => "button is-info is-rounded is-small "%>
+            <%end%>
+           <%= @cart["#{starship.id}"]%>
+           <%=link_to '+', change_quantity_path(starship, :quantity => 1), method: :post, :class => "button is-info is-rounded is-small"%></th>
+        </tr>
+      <%end%>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th><abbr title="Number"></abbr></th>
+        <th>Total</th>
+        <th><%=number_to_currency(total_price) %></th>
+        <th><%= total_quantity%> </th>
+      </tr>
+    </tfoot>
+  </table>
+
+<% else %>
+<p> No products in cart...</p>
+<%end%>
+<p> <%= @debug%>
+</p>

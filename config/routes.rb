@@ -3,6 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get 'orders/show_cart', to: 'orders#show_cart', as: 'show_cart'
+  delete 'orders/show_cart/:id', to: 'orders#delete_from_cart', as: 'delete_from_cart'
+  post 'orders/show_cart/:id', to: 'orders#change_quantity', as: 'change_quantity'
+
+  post 'add_to_cart/:id', to: 'starships#add_to_cart', as: 'add_to_cart'
+
   get 'users/show', to: 'users#show', as: :user_account
   get 'starships/starship_refurbished', to: 'starships#starship_refurbished', as: :starship_refurbished
 
