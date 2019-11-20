@@ -32,13 +32,20 @@
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
             <span class="navbar-item">
-              Greetins, Guest!
+              Greetins, <%=current_user ? current_user.name : "Guest" %>!
             </span>
-            <span class="navbar-item">
-              <a class="button is-primary is-inverted">
-                <span>Sign In</span>
-              </a>
-            </span>
+            <%if current_user%>
+              <span class="navbar-item">
+                <%=link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "button is-primary is-inverted"%>
+              </span>
+            <%else%>
+              <span class="navbar-item">
+              <%=link_to "Sign In", new_user_session_path, :class => "button is-primary is-inverted"%>
+              </span>
+              <span class="navbar-item">
+                <%=link_to "Sign Up", new_user_registration_path, :class => "button is-primary is-inverted"%>
+              </span>
+            <%end%>
             <span class="navbar-item">
               <a class="button is-primary is-inverted">
                 <span>Cart</span>
