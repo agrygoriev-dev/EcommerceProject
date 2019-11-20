@@ -52,9 +52,7 @@
               </span>
             <%end%>
             <span class="navbar-item">
-              <a class="button is-primary is-inverted">
-                <span>Cart</span>
-              </a>
+              <%=link_to "Cart(#{session[:cart].size if session[:cart] })", show_cart_path, :class => "button is-primary is-inverted"%>
             </span>
           </div>
         </div>

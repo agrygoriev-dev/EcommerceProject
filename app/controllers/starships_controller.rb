@@ -22,6 +22,12 @@ class StarshipsController < ApplicationController
   end
 
   def starship_params
-    params.require(:starship).permit(:name, :description, :search, :type, :id)
+    params.require(:starship).permit(:name, :description, :search, :type, :id, :quantity)
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart][id] = 1 unless session[:cart][id]
+    redirect_to root_path
   end
 end

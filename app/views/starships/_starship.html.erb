@@ -1,3 +1,18 @@
+<%if !name_is_link%>
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li>
+      <%=link_to "Home", root_path %>
+    </li>
+    <li>
+      <%=link_to starship.type.name, starship.type %>
+    </li>
+    <li>
+      <%=link_to_if false, starship.name, starship, :class => "is-active" %>
+    </li>
+  </ul>
+</nav>
+<%end%>
 <div class="column is-one-third">
   <% if starship.image.present?%>
         <div class="card-image">
@@ -44,6 +59,10 @@
           <strong>Price:</strong> $<%=starship.price%>
         </li>
       </ul>
+      <%= form_tag(add_to_cart_path(starship), method: :post) do%>
+            <%= number_field_tag(:quantity, '1', size: 3, min: 1, max: 100)%>
+            <%= submit_tag ("Add to cart")%>
+      <%end%>
     </div>
   </div>
 </div>
